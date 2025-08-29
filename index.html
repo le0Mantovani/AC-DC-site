@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AC/DC — História, Integrantes, Discografia e Fotos</title>
+  <meta name="description" content="Site acessível sobre a banda AC/DC: história, integrantes, principais álbuns e galeria de fotos. Controles de fonte e contraste inclusos." />
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #14161b;
+      --text: #e9eaee;
+      --muted: #b5bcc9;
+      --brand: #ff2136; /* vermelho elétrico */
+      --accent: #ffbe0b;
+      --link: #7ab6ff;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --font-scale: 1; /* será ajustado pelos controles */
+    }
+
+    /* Alto contraste */
+    .high-contrast {
+      --bg: #000;
+      --panel: #000;
+      --text: #fff;
+      --muted: #fff;
+      --brand: #fff;
+      --accent: #fff;
+      --link: #0ff;
+      filter: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(255,33,54,.15), transparent),
+                  radial-gradient(900px 500px at -10% 10%, rgba(255,190,11,.12), transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: calc(16px * var(--font-scale));
+    }
+
+    a { color: var(--link); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: fixed; left: 16px; top: 16px; width: auto; height: auto; padding: .6rem .9rem; background: #000; color: #fff; z-index: 10000; border-radius: 8px; }
+
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg), #000 20%);
+      border-bottom: 1px solid color-mix(in oklab, var(--text), #000 85%);
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+    .toolbar { display: flex; align-items: center; gap: .75rem; justify-content: space-between; }
+
+    .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: inherit; }
+    .logo {
+      width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), #ff5b6e);
+      display: grid; place-items: center; box-shadow: var(--shadow);
+    }
+    .logo svg { width: 24px; height: 24px; }
+    .brand span { font-weight: 800; letter-spacing: .5px; }
+
+    nav ul { list-style: none; display: flex; gap: .8rem; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text); padding: .5rem .7rem; border-radius: 10px; }
+    nav a:hover, nav a[aria-current="page"] { background: color-mix(in oklab, var(--panel), #fff 5%); }
+
+    .controls { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+    .controls button { border: 1px solid color-mix(in oklab, var(--text), #000 80%); background: var(--panel); color: var(--text); padding: .45rem .6rem; border-radius: 10px; cursor: pointer; box-shadow: var(--shadow); }
+    .controls button[aria-pressed="true"] { outline: 3px solid var(--accent); }
+
+    .hero { padding: 4rem 1rem 2.5rem; }
+    .hero .panel { border-radius: var(--radius); background: linear-gradient(180deg, color-mix(in oklab, var(--panel), #fff 4%), color-mix(in oklab, var(--panel), #000 6%)); box-shadow: var(--shadow); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.2rem; }
+    @media (max-width: 900px){ .hero-grid { grid-template-columns: 1fr; } }
+
+    .hero h1 { font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1.2; margin: 0; }
+    .hero p { color: var(--muted); margin: .6rem 0 1.2rem; }
+    .badge { display: inline-flex; align-items: center; gap: .4rem; background: #1e1f25; border: 1px solid #2c2e37; color: var(--muted); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; }
+
+    .grid { display: grid; gap: 1rem; }
+    .two { grid-template-columns: repeat(2, 1fr); }
+    .three { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 900px){ .two, .three { grid-template-columns: 1fr; } }
+
+    .card { background: color-mix(in oklab, var(--panel), #fff 2%); border: 1px solid color-mix(in oklab, var(--text), #000 88%); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+    .card h2, .card h3 { margin-top: 0; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-weight: 700; font-size: .85rem; color: var(--muted); }
+
+    .timeline { position: relative; padding-left: 1rem; }
+    .timeline::before { content: ""; position: absolute; left: .3rem; top: .3rem; bottom: .3rem; width: 2px; background: color-mix(in oklab, var(--text), #000 80%); }
+    .timeline li { margin: .6rem 0 .6rem 1rem; }
+
+    /* Galeria */
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+    @media (max-width: 900px){ .gallery { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px){ .gallery { grid-template-columns: 1fr; } }
+    .gallery figure { margin: 0; overflow: hidden; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--text), #000 86%); background: #0d0f14; }
+    .gallery img { display: block; width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .gallery figcaption { font-size: .9rem; color: var(--muted); padding: .5rem .6rem .7rem; }
+
+    footer { margin-top: 2rem; padding: 2rem 1rem 3rem; color: var(--muted); border-top: 1px solid color-mix(in oklab, var(--text), #000 88%); }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
+
+  <header role="banner">
+    <div class="wrap toolbar" aria-label="Barra superior">
+      <a class="brand" href="#topo">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h4l-2 4m2-4L7 8m8 0h4l-2 4m2-4-2 4m-7 0h4" stroke="#000" stroke-width="2"/><path d="M12 2v20" stroke="#fff" stroke-width="2"/></svg>
+        </span>
+        <span aria-label="AC/DC">AC/DC</span>
+      </a>
+
+      <nav aria-label="Primária">
+        <ul>
+          <li><a href="#historia">História</a></li>
+          <li><a href="#integrantes">Integrantes</a></li>
+          <li><a href="#discografia">Discografia</a></li>
+          <li><a href="#fotos">Fotos</a></li>
+        </ul>
+      </nav>
+
+      <div class="controls" role="group" aria-label="Controles de acessibilidade">
+        <button id="decFont" type="button" aria-label="Diminuir fonte" title="Diminuir fonte">A−</button>
+        <button id="incFont" type="button" aria-label="Aumentar fonte" title="Aumentar fonte">A+</button>
+        <button id="resetFont" type="button" aria-label="Tamanho padrão" title="Tamanho padrão">↺</button>
+        <button id="contrast" type="button" aria-pressed="false" aria-label="Alternar alto contraste" title="Alto contraste">Contraste</button>
+        <span id="live" class="sr-only" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="wrap hero" id="topo" aria-labelledby="titulo">
+      <div class="hero-grid">
+        <div class="panel" style="padding: 1.3rem;">
+          <span class="badge" aria-hidden="true">Rock • Hard Rock • Ao vivo</span>
+          <h1 id="titulo">AC/DC</h1>
+          <p>AC/DC é uma banda australiana formada em 1973 pelos irmãos <strong>Malcolm</strong> e <strong>Angus Young</strong>. Com riffs marcantes, energia de palco e uma sequência de álbuns clássicos, o grupo tornou-se um dos nomes mais populares do rock mundial.</p>
+          <p>O som mistura <em>blues</em> e <em>hard rock</em>. O logotipo com o raio entre as letras virou símbolo universal do rock pesado.</p>
+        </div>
+        <div class="panel" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Close de uma guitarra elétrica sob luz vermelha" style="width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;border-radius:12px;" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap grid two" id="historia" aria-labelledby="h-historia">
+      <article class="card">
+        <h2 id="h-historia"><span class="eyebrow">História</span><br>Da garagem aos estádios</h2>
+        <p><strong>1973–1979</strong> • A banda nasce em Sydney. Após mudanças iniciais, a formação clássica com <strong>Bon Scott</strong> nos vocais se firma. Lançam discos como <em>High Voltage</em> (1975), <em>Let There Be Rock</em> (1977) e <em>Highway to Hell</em> (1979), que leva o grupo ao topo.</p>
+        <p><strong>1980–1990</strong> • A morte de Bon Scott em 1980 é seguida pela entrada de <strong>Brian Johnson</strong>. O primeiro álbum com ele, <em>Back in Black</em> (1980), torna‑se um dos mais vendidos da história. A sequência inclui <em>For Those About to Rock</em> (1981) e turnês gigantes.</p>
+        <p><strong>1990–2009</strong> • A banda mantém regularidade com <em>The Razors Edge</em> (1990) e o hino “Thunderstruck”. Após hiatos, voltam aos palcos com grandes produções e registros ao vivo.</p>
+        <p><strong>2010–presente</strong> • Novos álbuns como <em>Rock or Bust</em> (2014) e <em>Power Up</em> (2020) reafirmam a estética crua do grupo. Mudanças de formação incluem períodos com <strong>Chris Slade</strong> e a entrada de <strong>Stevie Young</strong> na guitarra rítmica.</p>
+      </article>
+      <aside class="card" aria-labelledby="curiosidades">
+        <h3 id="curiosidades">Curiosidades</h3>
+        <ul>
+          <li>O nome AC/DC veio de uma máquina de costura da irmã dos Young, indicando “corrente alternada/contínua”.</li>
+          <li>O uniforme escolar de Angus surgiu de uma ideia da irmã Margaret para destacar o guitarrista no palco.</li>
+          <li><em>Back in Black</em> é um tributo a Bon Scott, com a capa preta e sinos marcando o tom.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="wrap card" id="integrantes" aria-labelledby="h-integrantes">
+      <h2 id="h-integrantes"><span class="eyebrow">Integrantes</span><br>Formações marcantes</h2>
+      <div class="grid two">
+        <div>
+          <h3>Formação clássica</h3>
+          <ul>
+            <li><strong>Angus Young</strong> — guitarra solo</li>
+            <li><strong>Malcolm Young</strong> — guitarra rítmica (in memoriam)</li>
+            <li><strong>Bon Scott</strong> — vocal (in memoriam)</li>
+            <li><strong>Cliff Williams</strong> — baixo</li>
+            <li><strong>Phil Rudd</strong> — bateria</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Outros membros notáveis</h3>
+          <ul>
+            <li><strong>Brian Johnson</strong> — vocal</li>
+            <li><strong>Chris Slade</strong> — bateria</li>
+            <li><strong>Stevie Young</strong> — guitarra rítmica</li>
+            <li><strong>Simon Wright</strong> — bateria</li>
+            <li><strong>Axl Rose</strong> — vocal convidado em turnê (2016)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap card" id="discografia" aria-labelledby="h-discografia">
+      <h2 id="h-discografia"><span class="eyebrow">Discografia essencial</span><br>Álbuns para começar</h2>
+      <div class="grid three" role="list">
+        <article class="card" role="listitem">
+          <h3>High Voltage (1975)</h3>
+          <p>Primeiro impacto internacional. Guitarras cruas e energia bruta.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Let There Be Rock (1977)</h3>
+          <p>Velocidade e peso. Título que define a proposta da banda.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Highway to Hell (1979)</h3>
+          <p>Produção refinada e refrões gigantes. Último com Bon Scott.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Back in Black (1980)</h3>
+          <p>Clássico absoluto. Homenagem a Bon, sucesso global.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>For Those About to Rock (1981)</h3>
+          <p>Canhões soam alto. Shows monumentais pelo mundo.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Power Up (2020)</h3>
+          <p>Retorno vigoroso com riffs à moda antiga.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap card" id="fotos" aria-labelledby="h-fotos">
+      <h2 id="h-fotos"><span class="eyebrow">Galeria</span><br>Fotos da banda</h2>
+      <p class="sr-only" id="fotos-desc">Galeria responsiva com descrições curtas das imagens. As fotos carregam de forma preguiçosa.</p>
+      <div class="gallery" role="list" aria-describedby="fotos-desc">
+        <!-- Substitua os URLs pelos seus arquivos/links de fotos da banda. Use alt descritivo. -->
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/AC_DC_Black_Ice_Tour_2009_Buenos_Aires_4_de_Diciembre_%284237872879%29.jpg/640px-AC_DC_Black_Ice_Tour_2009_Buenos_Aires_4_de_Diciembre_%284237872879%29.jpg" alt="AC/DC tocando ao vivo em grande arena em 2009, palco iluminado" />
+          <figcaption>Turnê mundial, energia máxima no palco.</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/AngusYoung.JPG/640px-AngusYoung.JPG" alt="Angus Young com a guitarra e uniforme escolar em 2010" />
+          <figcaption>Angus Young e o uniforme escolar.</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Brian_Johnson.jpg/1024px-Brian_Johnson.jpg" alt="Brian Johnson cantando no microfone com boina característica" />
+          <figcaption>Brian Johnson nos vocais.</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bonscott.jpg/640px-Bonscott.jpg" />
+          <figcaption>Bon Scott no fim dos anos 1970.</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CliffWilliams.JPG/640px-CliffWilliams.JPG" alt="Cliff Williams tocando baixo no palco" />
+          <figcaption>Cliff Williams no baixo.</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Phil_Rudd_-_Manchester_Apollo.jpg/640px-Phil_Rudd_-_Manchester_Apollo.jpg" alt="Phil Rudd na bateria" />
+          <figcaption>Phil Rudd na bateria.</figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:.6rem;font-size:.9rem;color:var(--muted);">Créditos: imagens de Wikimedia Commons, uso conforme licenças indicadas nas páginas de origem.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <p>Este site é um projeto educativo de fã para fã. Não oficial nem afiliado à banda.</p>
+      <p><a href="#topo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const html = document.documentElement;
+      const dec = document.getElementById('decFont');
+      const inc = document.getElementById('incFont');
+      const reset = document.getElementById('resetFont');
+      const contrast = document.getElementById('contrast');
+      const live = document.getElementById('live');
+
+      const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+      const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
+      const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+      let scale = read('font-scale', 1);
+      let hc = read('high-contrast', false);
+
+      const apply = () => { html.style.setProperty('--font-scale', scale); document.body.classList.toggle('high-contrast', !!hc); contrast.setAttribute('aria-pressed', !!hc); };
+      const announce = (msg) => { live.textContent = msg; setTimeout(()=> live.textContent = '', 1200); };
+
+      apply();
+
+      inc.addEventListener('click', () => { scale = clamp(Number(scale) + 0.1, 0.8, 1.8); write('font-scale', scale); apply(); announce('Fonte aumentada'); });
+      dec.addEventListener('click', () => { scale = clamp(Number(scale) - 0.1, 0.8, 1.8); write('font-scale', scale); apply(); announce('Fonte diminuída'); });
+      reset.addEventListener('click', () => { scale = 1; write('font-scale', scale); apply(); announce('Fonte padrão'); });
+      contrast.addEventListener('click', () => { hc = !hc; write('high-contrast', hc); apply(); announce(hc ? 'Alto contraste ativado' : 'Alto contraste desativado'); });
+
+      // Acessibilidade extra: fechar focos "perdidos" no topo quando se navega por âncoras
+      window.addEventListener('hashchange', () => {
+        const id = location.hash.slice(1);
+        const el = id && document.getElementById(id);
+        if (el) el.setAttribute('tabindex','-1'), el.focus({preventScroll:true});
+      });
+    })();
+  </script>
+</body>
+</html>
